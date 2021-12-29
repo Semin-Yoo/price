@@ -22,12 +22,24 @@ function App() {
   const getData = async () => {
     axios
       .all([
-        axios.get("/entc-won"),
-        axios.get("/upbit-btc"),
-        axios.get("/upbit-eth"),
-        axios.get("/upbit-xrp"),
-        axios.get("/binance"),
-        axios.get("/krw"),
+        axios.get(
+          "https://cors-anywhere.herokuapp.com/https://www.bw.com/api/data/v1/ticker?marketId=4326"
+        ),
+        axios.get(
+          "https://cors-anywhere.herokuapp.com/https://api.upbit.com/v1/ticker?markets=KRW-BTC"
+        ),
+        axios.get(
+          "https://cors-anywhere.herokuapp.com/https://api.upbit.com/v1/ticker?markets=KRW-ETH"
+        ),
+        axios.get(
+          "https://cors-anywhere.herokuapp.com/https://api.upbit.com/v1/ticker?markets=KRW-XRP"
+        ),
+        axios.get(
+          "https://cors-anywhere.herokuapp.com/https://api.binance.com/api/v1/ticker/allPrices"
+        ),
+        axios.get(
+          "https://cors-anywhere.herokuapp.com/https://exchange.jaeheon.kr:23490/query/USDKRW"
+        ),
       ])
 
       .then(
