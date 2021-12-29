@@ -9,9 +9,13 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import styles from "./App.css";
+import XRP from "../src/logo/Ripple (XRP).png";
+import ENTC from "../src/logo/entc.png";
+import ETH from "../src/logo/Ethereum (ETH).png";
+import BTC from "../src/logo/Bitcoin (BTC).png";
 import "./App.css";
 
-function App() {
+function App(app) {
   const [entcWon, setEntcWon] = useState([]);
   const [upBitBTC, setUpbitBTC] = useState([]);
   const [upBitETH, setUpbitETH] = useState([]);
@@ -22,24 +26,12 @@ function App() {
   const getData = async () => {
     axios
       .all([
-        axios.get(
-          "https://cors-anywhere.herokuapp.com/https://www.bw.com/api/data/v1/ticker?marketId=4326"
-        ),
-        axios.get(
-          "https://cors-anywhere.herokuapp.com/https://api.upbit.com/v1/ticker?markets=KRW-BTC"
-        ),
-        axios.get(
-          "https://cors-anywhere.herokuapp.com/https://api.upbit.com/v1/ticker?markets=KRW-ETH"
-        ),
-        axios.get(
-          "https://cors-anywhere.herokuapp.com/https://api.upbit.com/v1/ticker?markets=KRW-XRP"
-        ),
-        axios.get(
-          "https://cors-anywhere.herokuapp.com/https://api.binance.com/api/v1/ticker/allPrices"
-        ),
-        axios.get(
-          "https://cors-anywhere.herokuapp.com/https://exchange.jaeheon.kr:23490/query/USDKRW"
-        ),
+        axios.get("/api/data/v1/ticker?marketId=4326"),
+        axios.get("https://api.upbit.com/v1/ticker?markets=KRW-BTC"),
+        axios.get("https://api.upbit.com/v1/ticker?markets=KRW-ETH"),
+        axios.get("https://api.upbit.com/v1/ticker?markets=KRW-XRP"),
+        axios.get("https://api.binance.com/api/v1/ticker/allPrices"),
+        axios.get("https://exchange.jaeheon.kr:23490/query/USDKRW"),
       ])
 
       .then(
@@ -146,7 +138,7 @@ function App() {
         <TableBody>
           <TableRow>
             <StyledTableCell align="left">
-              <img src={"./logo/entc.png"} className="logo" />
+              <img src={ENTC} className="logo" />
               ENTERBUTTON (ENTC)
             </StyledTableCell>
             <StyledTableCell align="center" colSpan={2}>
@@ -163,20 +155,96 @@ function App() {
               {entcWon && entcWon.datas?.[5]}%
             </StyledTableCell>
           </TableRow>
-          {rows.map((row) => (
-            <TableRow
-              key={row.name}
-              sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
-            >
-              <StyledTableCell component="th" scope="row">
-                <img src={"./logo/" + row.name + ".png"} className="logo" />
-                {row.name}
-              </StyledTableCell>
-              <StyledTableCell align="center">{row.upbit}</StyledTableCell>
-              <StyledTableCell align="center">{row.binance}</StyledTableCell>
-              <StyledTableCell align="center">{row.change}</StyledTableCell>
-            </TableRow>
-          ))}
+          <TableRow>
+            <StyledTableCell align="left">
+              <img src={BTC} className="logo" />
+              Bitcoin (BTC)
+            </StyledTableCell>
+            <StyledTableCell align="center">
+              {Number(
+                upBitBTC?.find((a) => a?.market === "KRW-BTC")?.trade_price
+              )
+                .toFixed(0)
+                .toString()
+                .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+            </StyledTableCell>
+            <StyledTableCell align="center">
+              $
+              {Number(binance?.find((a) => a?.symbol === "BTCUSDT")?.price)
+                .toFixed(2)
+                .toString()
+                .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+            </StyledTableCell>
+            <StyledTableCell align="center">
+              {(
+                Number(
+                  upBitBTC?.find((a) => a?.market === "KRW-BTC")
+                    ?.signed_change_rate
+                ) * 100
+              ).toFixed(2)}
+              %
+            </StyledTableCell>
+          </TableRow>
+          <TableRow>
+            <StyledTableCell align="left">
+              <img src={ETH} className="logo" />
+              Ethereum (ETH)
+            </StyledTableCell>
+            <StyledTableCell align="center">
+              {Number(
+                upBitETH?.find((a) => a?.market === "KRW-ETH")?.trade_price
+              )
+                .toFixed(0)
+                .toString()
+                .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+            </StyledTableCell>
+            <StyledTableCell align="center">
+              $
+              {Number(binance?.find((a) => a?.symbol === "ETHUSDT")?.price)
+                .toFixed(2)
+                .toString()
+                .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+            </StyledTableCell>
+            <StyledTableCell align="center">
+              {(
+                Number(
+                  upBitETH?.find((a) => a?.market === "KRW-ETH")
+                    ?.signed_change_rate
+                ) * 100
+              ).toFixed(2)}
+              %
+            </StyledTableCell>
+          </TableRow>
+          <TableRow>
+            <StyledTableCell align="left">
+              <img src={XRP} className="logo" />
+              Ripple (XRP)
+            </StyledTableCell>
+            <StyledTableCell align="center">
+              {Number(
+                upBitXRP?.find((a) => a?.market === "KRW-XRP")?.trade_price
+              )
+                .toFixed(0)
+                .toString()
+                .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+            </StyledTableCell>
+            <StyledTableCell align="center">
+              $
+              {Number(binance?.find((a) => a?.symbol === "XRPUSDT")?.price)
+                .toFixed(2)
+                .toString()
+                .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+            </StyledTableCell>
+            <StyledTableCell align="center">
+              {(
+                Number(
+                  upBitXRP?.find((a) => a?.market === "KRW-XRP")
+                    ?.signed_change_rate
+                ) * 100
+              ).toFixed(2)}
+              %
+            </StyledTableCell>
+          </TableRow>
         </TableBody>
       </Table>
     </TableContainer>
