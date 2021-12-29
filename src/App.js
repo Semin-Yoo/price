@@ -23,22 +23,22 @@ function App() {
     axios
       .all([
         axios.get(
-          "https://cors-anywhere.herokuapp.com/https://www.bw.com/api/data/v1/ticker?marketId=4326"
+          "https://cors.bridged.cc/https://www.bw.com/api/data/v1/ticker?marketId=4326"
         ),
         axios.get(
-          "https://cors-anywhere.herokuapp.com/https://api.upbit.com/v1/ticker?markets=KRW-BTC"
+          "https://cors.bridged.cc/https://api.upbit.com/v1/ticker?markets=KRW-BTC"
         ),
         axios.get(
-          "https://cors-anywhere.herokuapp.com/https://api.upbit.com/v1/ticker?markets=KRW-ETH"
+          "https://cors.bridged.cc/https://api.upbit.com/v1/ticker?markets=KRW-ETH"
         ),
         axios.get(
-          "https://cors-anywhere.herokuapp.com/https://api.upbit.com/v1/ticker?markets=KRW-XRP"
+          "https://cors.bridged.cc/https://api.upbit.com/v1/ticker?markets=KRW-XRP"
         ),
         axios.get(
-          "https://cors-anywhere.herokuapp.com/https://api.binance.com/api/v1/ticker/allPrices"
+          "https://cors.bridged.cc/https://api.binance.com/api/v1/ticker/allPrices"
         ),
         axios.get(
-          "https://cors-anywhere.herokuapp.com/https://exchange.jaeheon.kr:23490/query/USDKRW"
+          "https://cors.bridged.cc/https://exchange.jaeheon.kr:23490/query/USDKRW"
         ),
       ])
 
