@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.css": "/static/css/main.d581da76.css",
-    "main.js": "/static/js/main.2d8f2a9e.js",
+    "main.css": "/static/css/main.b1c77c6b.css",
+    "main.js": "/static/js/main.26f9907c.js",
     "static/js/787.2f2a7ccb.chunk.js": "/static/js/787.2f2a7ccb.chunk.js",
     "static/media/Ethereum (ETH).png": "/static/media/Ethereum (ETH).a85b6de0dc4a013ae2f8.png",
     "static/media/Bitcoin (BTC).png": "/static/media/Bitcoin (BTC).82491fef997ab841639c.png",
     "static/media/entc.png": "/static/media/entc.5e40fc6c7f5b96565dbf.png",
     "static/media/Ripple (XRP).png": "/static/media/Ripple (XRP).a30ac2af14f2c3a5461a.png",
     "index.html": "/index.html",
-    "main.d581da76.css.map": "/static/css/main.d581da76.css.map",
-    "main.2d8f2a9e.js.map": "/static/js/main.2d8f2a9e.js.map",
+    "main.b1c77c6b.css.map": "/static/css/main.b1c77c6b.css.map",
+    "main.26f9907c.js.map": "/static/js/main.26f9907c.js.map",
     "787.2f2a7ccb.chunk.js.map": "/static/js/787.2f2a7ccb.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.d581da76.css",
-    "static/js/main.2d8f2a9e.js"
+    "static/css/main.b1c77c6b.css",
+    "static/js/main.26f9907c.js"
   ]
 }

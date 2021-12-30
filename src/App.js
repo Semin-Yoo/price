@@ -65,18 +65,18 @@ function App(app) {
     getData();
     setInterval(async () => {
       getData();
-    }, 500000000);
+    }, 500000);
   }, []);
 
   const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
-      fontSize: 15,
+      fontSize: 20,
       fontWeight: "bold",
-      padding: "59px 100px 20px 100px",
+      padding: "50px 120px 20px 120px",
     },
     [`&.${tableCellClasses.body}`]: {
-      padding: "75px 100px 75px 100px",
-      fontSize: 20,
+      padding: "60px 120px 60px 120px",
+      fontSize: 30,
       fontWeight: "bold",
     },
   }));
@@ -142,9 +142,12 @@ function App(app) {
         <TableHead>
           <TableRow>
             <StyledTableCell>Crypto</StyledTableCell>
-            <StyledTableCell align="center">Upbit</StyledTableCell>
-            <StyledTableCell align="center">Binance</StyledTableCell>
-            <StyledTableCell align="center">24h</StyledTableCell>
+            <StyledTableCell align="center" colSpan={2}>
+              Upbit
+            </StyledTableCell>
+            <StyledTableCell align="center" colSpan={2}>
+              Binance
+            </StyledTableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -153,7 +156,7 @@ function App(app) {
               <img src={ENTC} className="logo" />
               ENTERBUTTON (ENTC)
             </StyledTableCell>
-            <StyledTableCell align="center" colSpan={2}>
+            <StyledTableCell align="center" colSpan={4}>
               ${entcWon && entcWon.datas?.[1]} (
               {(
                 Number(entcWon && entcWon.datas?.[1]) *
@@ -163,16 +166,13 @@ function App(app) {
                 .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
               원)
             </StyledTableCell>
-            <StyledTableCell align="center">
-              {entcWon && entcWon.datas?.[5]}%
-            </StyledTableCell>
           </TableRow>
           <TableRow>
             <StyledTableCell align="left">
               <img src={BTC} className="logo" />
               Bitcoin (BTC)
             </StyledTableCell>
-            <StyledTableCell align="center">
+            <StyledTableCell align="center" colSpan={2}>
               {Number(
                 upBitBTC?.find((a) => a?.market === "KRW-BTC")?.trade_price
               )
@@ -180,21 +180,12 @@ function App(app) {
                 .toString()
                 .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
             </StyledTableCell>
-            <StyledTableCell align="center">
+            <StyledTableCell align="center" colSpan={2}>
               $
               {Number(binance?.find((a) => a?.symbol === "BTCUSDT")?.price)
                 .toFixed(2)
                 .toString()
                 .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
-            </StyledTableCell>
-            <StyledTableCell align="center">
-              {(
-                Number(
-                  upBitBTC?.find((a) => a?.market === "KRW-BTC")
-                    ?.signed_change_rate
-                ) * 100
-              ).toFixed(2)}
-              %
             </StyledTableCell>
           </TableRow>
           <TableRow>
@@ -202,7 +193,7 @@ function App(app) {
               <img src={ETH} className="logo" />
               Ethereum (ETH)
             </StyledTableCell>
-            <StyledTableCell align="center">
+            <StyledTableCell align="center" colSpan={2}>
               {Number(
                 upBitETH?.find((a) => a?.market === "KRW-ETH")?.trade_price
               )
@@ -210,21 +201,12 @@ function App(app) {
                 .toString()
                 .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
             </StyledTableCell>
-            <StyledTableCell align="center">
+            <StyledTableCell align="center" colSpan={2}>
               $
               {Number(binance?.find((a) => a?.symbol === "ETHUSDT")?.price)
                 .toFixed(2)
                 .toString()
                 .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
-            </StyledTableCell>
-            <StyledTableCell align="center">
-              {(
-                Number(
-                  upBitETH?.find((a) => a?.market === "KRW-ETH")
-                    ?.signed_change_rate
-                ) * 100
-              ).toFixed(2)}
-              %
             </StyledTableCell>
           </TableRow>
           <TableRow>
@@ -232,7 +214,7 @@ function App(app) {
               <img src={XRP} className="logo" />
               Ripple (XRP)
             </StyledTableCell>
-            <StyledTableCell align="center">
+            <StyledTableCell align="center" colSpan={2}>
               {Number(
                 upBitXRP?.find((a) => a?.market === "KRW-XRP")?.trade_price
               )
@@ -240,21 +222,12 @@ function App(app) {
                 .toString()
                 .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
             </StyledTableCell>
-            <StyledTableCell align="center">
+            <StyledTableCell align="center" colSpan={2}>
               $
               {Number(binance?.find((a) => a?.symbol === "XRPUSDT")?.price)
                 .toFixed(2)
                 .toString()
                 .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
-            </StyledTableCell>
-            <StyledTableCell align="center">
-              {(
-                Number(
-                  upBitXRP?.find((a) => a?.market === "KRW-XRP")
-                    ?.signed_change_rate
-                ) * 100
-              ).toFixed(2)}
-              %
             </StyledTableCell>
           </TableRow>
         </TableBody>
