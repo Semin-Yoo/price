@@ -72,11 +72,18 @@ function App(app) {
     [`&.${tableCellClasses.head}`]: {
       fontSize: 20,
       fontWeight: "bold",
-      padding: "50px 120px 20px 120px",
+      padding: "50px 100px 20px 100px",
     },
     [`&.${tableCellClasses.body}`]: {
-      padding: "60px 120px 60px 120px",
-      fontSize: 30,
+      padding: "60px 100px 60px 100px",
+      fontSize: 27,
+      fontWeight: "bold",
+    },
+  }));
+  const StyledPriceTableCell = styled(TableCell)(({ theme }) => ({
+    [`&.${tableCellClasses.body}`]: {
+      padding: "60px 100px 60px 100px",
+      fontSize: 46,
       fontWeight: "bold",
     },
   }));
@@ -153,10 +160,10 @@ function App(app) {
         <TableBody>
           <TableRow>
             <StyledTableCell align="left">
-              <img src={ENTC} className="logo" />
+              <img src={ENTC} className="logo" colSpan={2} />
               ENTERBUTTON (ENTC)
             </StyledTableCell>
-            <StyledTableCell align="center" colSpan={4}>
+            <StyledPriceTableCell align="center" colSpan={4}>
               ${entcWon && entcWon.datas?.[1]} (
               {(
                 Number(entcWon && entcWon.datas?.[1]) *
@@ -165,70 +172,70 @@ function App(app) {
                 .toFixed(0)
                 .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
               원)
-            </StyledTableCell>
+            </StyledPriceTableCell>
           </TableRow>
           <TableRow>
             <StyledTableCell align="left">
               <img src={BTC} className="logo" />
               Bitcoin (BTC)
             </StyledTableCell>
-            <StyledTableCell align="center" colSpan={2}>
+            <StyledPriceTableCell align="center" colSpan={2}>
               {Number(
                 upBitBTC?.find((a) => a?.market === "KRW-BTC")?.trade_price
               )
                 .toFixed(0)
                 .toString()
                 .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
-            </StyledTableCell>
-            <StyledTableCell align="center" colSpan={2}>
+            </StyledPriceTableCell>
+            <StyledPriceTableCell align="center" colSpan={2}>
               $
               {Number(binance?.find((a) => a?.symbol === "BTCUSDT")?.price)
                 .toFixed(2)
                 .toString()
                 .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
-            </StyledTableCell>
+            </StyledPriceTableCell>
           </TableRow>
           <TableRow>
             <StyledTableCell align="left">
               <img src={ETH} className="logo" />
               Ethereum (ETH)
             </StyledTableCell>
-            <StyledTableCell align="center" colSpan={2}>
+            <StyledPriceTableCell align="center" colSpan={2}>
               {Number(
                 upBitETH?.find((a) => a?.market === "KRW-ETH")?.trade_price
               )
                 .toFixed(0)
                 .toString()
                 .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
-            </StyledTableCell>
-            <StyledTableCell align="center" colSpan={2}>
+            </StyledPriceTableCell>
+            <StyledPriceTableCell align="center" colSpan={2}>
               $
               {Number(binance?.find((a) => a?.symbol === "ETHUSDT")?.price)
                 .toFixed(2)
                 .toString()
                 .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
-            </StyledTableCell>
+            </StyledPriceTableCell>
           </TableRow>
           <TableRow>
             <StyledTableCell align="left">
               <img src={XRP} className="logo" />
               Ripple (XRP)
             </StyledTableCell>
-            <StyledTableCell align="center" colSpan={2}>
+            <StyledPriceTableCell align="center" colSpan={2}>
               {Number(
                 upBitXRP?.find((a) => a?.market === "KRW-XRP")?.trade_price
               )
                 .toFixed(0)
                 .toString()
                 .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
-            </StyledTableCell>
-            <StyledTableCell align="center" colSpan={2}>
+            </StyledPriceTableCell>
+            <StyledPriceTableCell align="center" colSpan={2}>
               $
               {Number(binance?.find((a) => a?.symbol === "XRPUSDT")?.price)
                 .toFixed(2)
                 .toString()
                 .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
-            </StyledTableCell>
+            </StyledPriceTableCell>
           </TableRow>
         </TableBody>
       </Table>
